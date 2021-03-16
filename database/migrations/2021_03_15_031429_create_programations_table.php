@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProgramationTable extends Migration
+class CreateProgramationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateProgramationTable extends Migration
      */
     public function up()
     {
-        Schema::create('programation', function (Blueprint $table) {
+        Schema::create('programations', function (Blueprint $table) {
              $table->id();
             $table->string('name')->unique();
             $table->time('start_hour')->required();
@@ -32,6 +32,6 @@ class CreateProgramationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programation');
+        Schema::dropIfExists('programations');
     }
 }
