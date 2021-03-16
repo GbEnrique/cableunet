@@ -9,6 +9,7 @@ use App\Models\Cable;
 use App\Models\Packchannel;
 use App\Models\Channel;
 use App\Models\Programation;
+use App\Models\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -25,5 +26,6 @@ class DatabaseSeeder extends Seeder
         Packchannel::factory(20)->create();
         Channel::factory(20)->create();
         Programation::factory(40)->create();
+        User::factory()->create();
     }
 }
