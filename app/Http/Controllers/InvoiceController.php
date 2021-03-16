@@ -6,14 +6,23 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Invoice;
+use App\Models\Packservice;
 class InvoiceController extends Controller
 {
 
-	public function create(){
+	public function index(){
 
     	$user = Auth::user();
-    	$invoice = Invoice::where('user_id',$user->id)->first();
-    	return view('invoices.create',compact('invoice'));
+    	$invoices = Invoice::where('user_id',$user->id)->orderBy('id','desc')->get();
+
+        $packservices = Packservice::all();
+        // return $packservices;
+    	return view('invoices.create',compact('invoices','packservices'));
+    }
+
+
+    public function create(){
+
     }
     public function show(Invoice $invoice){
     	 
@@ -29,13 +38,31 @@ class InvoiceController extends Controller
 
             $invoice = Invoice::create($request->all());
         }else{
-             $invoice->price += $request->price;
-             $invoice->user_id = $request->user_id;
 
-             $invoice->save();
+            // return $invoice;
+
+             if($request->packservice_id == $invoice->packservice_id){
+
+                return redirect()->route('invoices.error');
+             }else{ 
+
+                $invoice = Invoice::create([
+                    'price'=>$request->price,
+                    'user_id' => $request->user_id,
+                    'packservice_id'=>$request->packservice_id,
+
+                ]);
+
+             }
+
         }
     	
-
     	return redirect()->route('invoices.show',$invoice);
     }
+
+     public function error(){
+
+        return view('invoices.error');
+
+     }
 }

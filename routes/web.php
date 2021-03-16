@@ -63,6 +63,7 @@ Route::get("packservices/user",[PackserviceController::class,'usuario'])->name('
 Route::get("packservices/{packservice}/ver",[PackserviceController::class,'ver'])->name('packservices.ver');
 Route::resource('packservices',PackserviceController::class);
 
+Route::get("invoices/error",[InvoiceController::class,'error'])->name('invoices.error');
 Route::resource('invoices',InvoiceController::class);
 
 Route::resource('users',UserController::class);

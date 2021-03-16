@@ -6,17 +6,13 @@
 		<a href="{{ route('home') }}">Volver</a>
 		<br>
 	<ul>
-
 		@foreach ($packservices as $packservice)
-
-		
-
 			<li>
 				<a href="{{ route('packservices.ver', $packservice) }}">{{  $packservice->name }}</a>
 			</li>
 
 		@endforeach
-
+	</ul>
 		
 </body>
 

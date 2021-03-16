@@ -19,6 +19,7 @@
 		@csrf
 		<input type="hidden" name="price" value="{{ $packservice->price }}">
 		<input type="hidden" name="user_id" value="{{ $user->id }}">
+		<input type="hidden" name="packservice_id" value="{{ $packservice->id }}">
 		<button type="submit">selecionar Plan</button>
 	</form>
 </body>
