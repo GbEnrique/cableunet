@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
         Packchannel::factory(20)->create();
         Channel::factory(20)->create();
         Programation::factory(40)->create();
-        User::factory()->create();
+        User::factory(1)->create();
     }
 }
